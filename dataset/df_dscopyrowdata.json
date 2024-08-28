@@ -1,0 +1,19 @@
+{
+	"name": "df_dscopyrowdata",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_connectDatalakegen2",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Parquet",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileSystem": "rowdata"
+			},
+			"compressionCodec": "snappy"
+		},
+		"schema": []
+	}
+}
