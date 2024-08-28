@@ -23,7 +23,7 @@
 					"type": "Expression"
 				},
 				"folderPath": {
-					"value": "@dataset().SchemaName",
+					"value": "@concat(dataset().SchemaName,'/',dataset().TableName)",
 					"type": "Expression"
 				},
 				"fileSystem": "rowdata"
