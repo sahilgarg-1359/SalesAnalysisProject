@@ -22,6 +22,12 @@
 		},
 		"ls_getSaleasSqlData_properties_typeProperties_userName": {
 			"value": "SalesProject"
+		},
+		"containerUri": {
+			"value": ""
+		},
+		"containerSasToken": {
+			"value": ""
 		}
 	}
 }
