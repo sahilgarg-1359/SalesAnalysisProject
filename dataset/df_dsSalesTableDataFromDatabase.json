@@ -1,0 +1,25 @@
+{
+	"name": "df_dsSalesTableDataFromDatabase",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_getSaleasSqlData",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "SchemaName",
+				"type": "varchar"
+			},
+			{
+				"name": "TableName",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "SchemaTableData"
+		}
+	}
+}
