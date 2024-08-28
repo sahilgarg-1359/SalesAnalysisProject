@@ -1,0 +1,9 @@
+{
+	"name": "adls-salesanalysisproject",
+	"location": "norwayeast",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "0b4a89b2-cc71-418a-92db-48c83f93b542",
+		"tenantId": "404b1967-6507-45ab-8a6d-7374a3f478be"
+	}
+}
