@@ -150,7 +150,8 @@
 					"dataset": {
 						"referenceName": "df_dsSalesTableDataFromDatabase",
 						"type": "DatasetReference"
-					}
+					},
+					"firstRowOnly": false
 				}
 			}
 		],
