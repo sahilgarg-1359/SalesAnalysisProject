@@ -39,7 +39,14 @@
 						]
 					}
 				],
-				"userProperties": [],
+				"userProperties": [
+					{
+						"name": "SchemaName"
+					},
+					{
+						"name": "TableName"
+					}
+				],
 				"typeProperties": {
 					"items": {
 						"value": "@activity('Lookup for all Tables').output.value",
