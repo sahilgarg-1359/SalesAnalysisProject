@@ -28,7 +28,7 @@
 				},
 				"fileSystem": "rowdata"
 			},
-			"compressionCodec": "none"
+			"compressionCodec": "snappy"
 		},
 		"schema": []
 	}
