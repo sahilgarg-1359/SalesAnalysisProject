@@ -1,0 +1,13 @@
+{
+	"name": "ls_databricksnotebook",
+	"properties": {
+		"annotations": [],
+		"type": "AzureDatabricks",
+		"typeProperties": {
+			"domain": "https://adb-499207682916571.11.azuredatabricks.net",
+			"authentication": "MSI",
+			"workspaceResourceId": "/subscriptions/57f2810f-ad2b-4589-ae35-d733aba0a4c5/resourceGroups/SalesAnalysisProject/providers/Microsoft.Databricks/workspaces/dbricks_TransformSalesData",
+			"existingClusterId": "0906-081047-9o2h97l9"
+		}
+	}
+}
