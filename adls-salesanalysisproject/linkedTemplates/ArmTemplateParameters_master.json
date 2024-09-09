@@ -14,6 +14,9 @@
 		"ls_connectDatalakegen2_properties_typeProperties_url": {
 			"value": "https://stsalestransformdata.dfs.core.windows.net/"
 		},
+		"ls_databBricksNotebook_properties_typeProperties_existingClusterId": {
+			"value": "0906-081047-9o2h97l9"
+		},
 		"ls_getSaleasSqlData_properties_typeProperties_server": {
 			"value": "db-saleasanalysisdataenginnering.database.windows.net"
 		},

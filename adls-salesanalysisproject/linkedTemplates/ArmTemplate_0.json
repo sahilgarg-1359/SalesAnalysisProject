@@ -19,6 +19,10 @@
 			"type": "string",
 			"defaultValue": "https://stsalestransformdata.dfs.core.windows.net/"
 		},
+		"ls_databBricksNotebook_properties_typeProperties_existingClusterId": {
+			"type": "string",
+			"defaultValue": "0906-081047-9o2h97l9"
+		},
 		"ls_getSaleasSqlData_properties_typeProperties_server": {
 			"type": "string",
 			"defaultValue": "db-saleasanalysisdataenginnering.database.windows.net"
@@ -50,6 +54,22 @@
 						"type": "SecureString",
 						"value": "[parameters('ls_connectDatalakegen2_accountKey')]"
 					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/ls_databBricksNotebook')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureDatabricks",
+				"typeProperties": {
+					"domain": "https://adb-499207682916571.11.azuredatabricks.net",
+					"authentication": "MSI",
+					"workspaceResourceId": "/subscriptions/57f2810f-ad2b-4589-ae35-d733aba0a4c5/resourceGroups/SalesAnalysisProject/providers/Microsoft.Databricks/workspaces/dbricks_TransformSalesData",
+					"existingClusterId": "[parameters('ls_databBricksNotebook_properties_typeProperties_existingClusterId')]"
 				}
 			},
 			"dependsOn": []
@@ -269,6 +289,62 @@
 							},
 							"firstRowOnly": false
 						}
+					},
+					{
+						"name": "Processed RowData",
+						"description": "first level transformation of row Data",
+						"type": "DatabricksNotebook",
+						"dependsOn": [
+							{
+								"activity": "Iterate each table records",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"notebookPath": "/Users/1706877@tcs.com/TransformSalesDataProject/Processed RowData"
+						},
+						"linkedServiceName": {
+							"referenceName": "ls_databBricksNotebook",
+							"type": "LinkedServiceReference"
+						}
+					},
+					{
+						"name": "Transformed ProcessedData",
+						"description": "second level transformation of processed Data",
+						"type": "DatabricksNotebook",
+						"dependsOn": [
+							{
+								"activity": "Processed RowData",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"notebookPath": "/Users/1706877@tcs.com/TransformSalesDataProject/Transform ProcessedData"
+						},
+						"linkedServiceName": {
+							"referenceName": "ls_databBricksNotebook",
+							"type": "LinkedServiceReference"
+						}
 					}
 				],
 				"policy": {
@@ -278,6 +354,7 @@
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/datasets/df_dsSalesTableDataFromDatabase')]",
+				"[concat(variables('factoryId'), '/linkedServices/ls_databBricksNotebook')]",
 				"[concat(variables('factoryId'), '/datasets/df_dscopyrowdata')]"
 			]
 		}
