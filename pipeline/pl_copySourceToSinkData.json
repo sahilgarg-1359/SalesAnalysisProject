@@ -116,6 +116,60 @@
 					},
 					"firstRowOnly": false
 				}
+			},
+			{
+				"name": "Notebook1",
+				"type": "DatabricksNotebook",
+				"dependsOn": [
+					{
+						"activity": "Iterate each table records",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"notebookPath": "/Users/1706877@tcs.com/TransformSalesDataProject/Processed RowData"
+				},
+				"linkedServiceName": {
+					"referenceName": "ls_databBricksNotebook",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "Notebook2",
+				"type": "DatabricksNotebook",
+				"dependsOn": [
+					{
+						"activity": "Notebook1",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"notebookPath": "/Users/1706877@tcs.com/TransformSalesDataProject/Transform ProcessedData"
+				},
+				"linkedServiceName": {
+					"referenceName": "ls_databBricksNotebook",
+					"type": "LinkedServiceReference"
+				}
 			}
 		],
 		"annotations": []
