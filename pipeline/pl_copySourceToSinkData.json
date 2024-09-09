@@ -118,7 +118,8 @@
 				}
 			},
 			{
-				"name": "Notebook1",
+				"name": "Processed RowData",
+				"description": "first level transformation of row Data",
 				"type": "DatabricksNotebook",
 				"dependsOn": [
 					{
@@ -145,11 +146,12 @@
 				}
 			},
 			{
-				"name": "Notebook2",
+				"name": "Transformed ProcessedData",
+				"description": "second level transformation of processed Data",
 				"type": "DatabricksNotebook",
 				"dependsOn": [
 					{
-						"activity": "Notebook1",
+						"activity": "Processed RowData",
 						"dependencyConditions": [
 							"Succeeded"
 						]
